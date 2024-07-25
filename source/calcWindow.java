@@ -1,3 +1,4 @@
+//Code by Nathan Lamoureux
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -6,7 +7,10 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 public class calcWindow implements ActionListener{
+
     
+//Initializing frame components
+
 JFrame frame = new JFrame();
 JButton myButton = new JButton("Get Coordinates");
 JTextField fieldx = new JTextField();
@@ -20,7 +24,7 @@ JTextField netherZ = new JTextField();
 
 
     calcWindow() {
-        
+        //customizing and displaying frame, text, textfields, and button
         Overworld.setBounds(125, 0, 150, 75);
         frame.add(Overworld);
 
@@ -65,18 +69,21 @@ JTextField netherZ = new JTextField();
 
     }
 
-
+    //Creating an actionlistener that calls the conversion function whenever myButton is pressed
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==myButton) {
-
+        
+    //Reading X and Y coordinates in, then passing them to function coordResults
         String X = fieldx.getText();
         int oX = Integer.parseInt(X);
       
             int nX = coordResults(oX);
         
         X = Integer.toString(nX);
-
+    /*The coordinates are read in as a string and converted to integers when passed to the function. 
+    * Result coordinates are converted back to strings in order to be diaplayed as a textfield
+    */
         netherX.setText(X);
 
         String Z = fieldz.getText();
@@ -93,7 +100,7 @@ JTextField netherZ = new JTextField();
         throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
     }
 
-
+    //Function coordResults takes the X and Y input, divides them by 8, and returns the result as n
     private int coordResults(int oX2) {
 
         int n = oX2 / 8;
@@ -103,3 +110,4 @@ JTextField netherZ = new JTextField();
     
 
 }
+
